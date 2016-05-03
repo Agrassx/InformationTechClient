@@ -14,8 +14,8 @@ import java.util.List;
 public class ArticleAdapter extends ArrayAdapter<Article>  {
     private final List<Article> values;
 
-    public ArticleAdapter(Context context, int resource, List<Article> values) {
-        super(context, resource, values);
+    public ArticleAdapter(Context context, List<Article> values) {
+        super(context, R.layout.article_list_item, values);
         this.values = values;
     }
 

@@ -9,8 +9,8 @@
         />
     <item
         android:id="@+id/menu_favorite"
-        android:icon="@drawable/ic_favorite_border_black_24dp"
-        android:title="@string/search_menu"
+        android:icon="@drawable/ic_menu_star_24dp"
+        android:title="@string/show_only_favorite"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/menu"

@@ -6,6 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.muctr.informationtech"
+        buildConfigField 'String', 'ServerAddress', '"http://192.168.0.107:9000/api/v1/"'
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
@@ -27,4 +28,5 @@ dependencies {
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.android.support:design:22.2.1'
     compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
+    compile 'com.mcxiaoke.volley:library:1.0.17'
 }
