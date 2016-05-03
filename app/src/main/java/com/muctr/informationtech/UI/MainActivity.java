@@ -1,4 +1,4 @@
-package com.muctr.informationtech;
+package com.muctr.informationtech.UI;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -11,8 +11,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
+
+import com.muctr.informationtech.FileExplorer.FileChooser;
+import com.muctr.informationtech.R;
 
 import java.io.File;
 

@@ -31,7 +31,7 @@ public class ClientIntentService extends IntentService implements Response.Liste
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
+    public void onHandleIntent(Intent intent) {
 
     }
 

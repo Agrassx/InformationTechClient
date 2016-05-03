@@ -1,4 +1,4 @@
-package com.muctr.informationtech;
+package com.muctr.informationtech.UI;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
+
+import com.muctr.informationtech.R;
 
 
 /**

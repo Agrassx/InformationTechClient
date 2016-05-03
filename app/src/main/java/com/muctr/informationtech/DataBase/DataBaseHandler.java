@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.muctr.informationtech.Article;
 
@@ -36,7 +37,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_ARTICLE + " (" + _ID + " INTEGER PRIMARY KEY," +
                     COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
                     COLUMN_URL + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_IS_FAVORITE + TEXT_TYPE + COMMA_SEP +
+                    COLUMN_IS_FAVORITE + TEXT_TYPE +
             " )";
 
     public DataBaseHandler(Context context) {
@@ -76,7 +77,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             while (cursor.moveToNext()) {
-                if (cursor.getString(2).equals(FAVORITE)) {
+                if (cursor.getString(3).equals(FAVORITE)) {
                     article = new Article(cursor.getString(1), cursor.getString(2), true);
                 } else {
                     article = new Article(cursor.getString(1), cursor.getString(2), false);
@@ -96,7 +97,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
-
     public int updateArticle(Article article) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -114,6 +114,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_ARTICLE, COLUMN_NAME + " = ?",
                 new String[] { String.valueOf(article.getName()) });
         db.close();
+    }
+
+    public void deleteAllArticles() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_ARTICLE);
     }
 
     private String isFavoriteString(Article article) {

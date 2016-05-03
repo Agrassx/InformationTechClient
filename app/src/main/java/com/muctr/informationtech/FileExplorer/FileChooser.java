@@ -1,10 +1,8 @@
-package com.muctr.informationtech;
+package com.muctr.informationtech.FileExplorer;
 
 import android.app.ListActivity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,7 +10,8 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.muctr.informationtech.R;
 
 import java.io.File;
 import java.text.DateFormat;
