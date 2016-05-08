@@ -2,19 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_search"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/search_menu"
-        app:showAsAction="ifRoom"
-        />
-    <item
         android:id="@+id/menu_favorite"
         android:icon="@drawable/ic_menu_star_24dp"
         android:title="@string/show_only_favorite"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/menu"
-        android:icon="@drawable/ic_more_vert_black_24dp"
+        android:id="@+id/menu_refresh"
+        android:icon="@drawable/ic_refresh_24dp"
+        android:title="@string/refresh_menu"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/search_menu"
-        app:showAsAction="never"/>
+        app:showAsAction="ifRoom"
+        />
 </menu>

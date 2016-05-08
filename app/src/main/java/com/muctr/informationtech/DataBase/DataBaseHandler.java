@@ -104,7 +104,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public List<Article> getFavoriteArticlesList() {
 
         List<Article> articleList = new ArrayList<>();
-        String selectQuery = "SELECT * FROM " + TABLE_ARTICLE + "WHERE " + COLUMN_IS_FAVORITE + "= " + FAVORITE;
+        String selectQuery = "SELECT * FROM " + TABLE_ARTICLE + " WHERE " + COLUMN_IS_FAVORITE + " = " + "'" + FAVORITE + "'";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         while (cursor.moveToNext()) {
@@ -125,17 +125,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return cursor.getCount();
-    }
-
-    public void updateArticle(Article article) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, article.getName());
-        values.put(COLUMN_URL, article.getUrl());
-        values.put(COLUMN_IS_FAVORITE, isFavoriteString(article));
-        db.update(TABLE_ARTICLE, values, COLUMN_NAME + " = ?",
-                    new String[]{ article.getName() });
     }
 
     public void deleteAllArticles() {
@@ -183,6 +172,17 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         int count = cursor.getCount();
         cursor.close();
         return count != 0;
+    }
+
+    private void updateArticle(Article article) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, article.getName());
+        values.put(COLUMN_URL, article.getUrl());
+        values.put(COLUMN_IS_FAVORITE, isFavoriteString(article));
+        db.update(TABLE_ARTICLE, values, COLUMN_NAME + " = ?",
+                new String[]{ article.getName() });
     }
 
     private void addArticle(Article article) {

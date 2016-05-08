@@ -9,7 +9,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.muctr.informationtech.AppLogics.Article;
 import com.muctr.informationtech.DataBase.DataBaseHandler;
 import com.muctr.informationtech.R;
 import com.muctr.informationtech.UI.ArticleListFragment;
@@ -40,7 +39,7 @@ public class ArticleAdapter extends ArrayAdapter<Article>  {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 values.get(position).setFavorite(isChecked);
-                dataBase.updateArticle(values.get(position));
+                dataBase.process(values.get(position));
             }
         });
 
