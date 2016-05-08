@@ -1,4 +1,4 @@
-package com.muctr.informationtech;
+package com.muctr.informationtech.AppLogics;
 
 public class Article {
 
@@ -6,9 +6,13 @@ public class Article {
     private String name;
     private boolean favorite;
     private int id;
+    private boolean isDelete = false;
 
 
     public Article(String name, String url) {
+        if (url.isEmpty()) {
+            isDelete = true;
+        }
         this.name = name;
         this.url = url;
         this.favorite = false;
@@ -34,5 +38,9 @@ public class Article {
 
     public boolean isFavorite() {
         return favorite;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
     }
 }

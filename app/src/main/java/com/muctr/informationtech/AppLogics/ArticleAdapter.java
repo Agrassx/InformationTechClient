@@ -1,4 +1,4 @@
-package com.muctr.informationtech;
+package com.muctr.informationtech.AppLogics;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,10 +9,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.muctr.informationtech.AppLogics.Article;
 import com.muctr.informationtech.DataBase.DataBaseHandler;
+import com.muctr.informationtech.R;
 import com.muctr.informationtech.UI.ArticleListFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleAdapter extends ArrayAdapter<Article>  {

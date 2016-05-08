@@ -13,12 +13,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.muctr.informationtech.Article;
-import com.muctr.informationtech.ArticleAdapter;
-import com.muctr.informationtech.ClientIntentService;
+import com.muctr.informationtech.AppLogics.Article;
+import com.muctr.informationtech.AppLogics.ArticleAdapter;
+import com.muctr.informationtech.REST.ClientIntentService;
 import com.muctr.informationtech.DataBase.DataBaseHandler;
 import com.muctr.informationtech.R;
-import com.muctr.informationtech.TaskGetListHandler;
+import com.muctr.informationtech.REST.TaskGetListHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +76,7 @@ public class ArticleListFragment extends Fragment implements AdapterView.OnItemC
         Bundle bundle = new Bundle();
         Log.e("ArticleList", article.getName());
         bundle.putString("name", article.getName());
+        bundle.putString("url", article.getUrl());
         selectedItemFragment.setArguments(bundle);
 
         fragmentManager.beginTransaction()
@@ -89,41 +90,21 @@ public class ArticleListFragment extends Fragment implements AdapterView.OnItemC
     @Override
     public void onRefresh() {
         swipeRefreshLayout.setRefreshing(true);
-        clientIntentService.refreshList();
+        clientIntentService.refreshList(dataBase.getOffset());
     }
 
     @Override
     public void onTaskSuccessful(List<Article> list) {
-//        adapter.clear();
-//        adapter.addAll(list);
         Log.e("onTaskSuccessful","complete :)");
         swipeRefreshLayout.setRefreshing(false);
+        adapter.clear();
+        adapter.addAll(list);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onTaskFailed() {
         Log.e("onTaskFailed","fail :(");
         swipeRefreshLayout.setRefreshing(false);
-//        List<Article> articleList = new ArrayList<>();
-//        articleList.add(new Article("Android", "www.exampleAndroid.com"));
-//        articleList.add(new Article("iPhone", "www.exampleAndroid.com"));
-//        articleList.add(new Article("WindowsMobile", "www.exampleAndroid.com"));
-//        articleList.add(new Article("Blackberry", "www.exampleAndroid.com"));
-//        articleList.add(new Article("WebOS", "www.exampleAndroid.com"));
-//        articleList.add(new Article("Ubuntu", "www.exampleAndroid.com"));
-//        articleList.add(new Article("Windows7", "www.exampleAndroid.com"));
-//        articleList.add(new Article("Max OS X", "www.exampleAndroid.com"));
-//        articleList.add(new Article("Linux", "www.exampleAndroid.com"));
-//        articleList.add(new Article("OS/2", "www.exampleAndroid.com"));
-
-        dataBase.deleteAllArticles();
-        dataBase.addNewArticle(new Article("Android", "www.exampleAndroid.com"));
-        dataBase.addNewArticle(new Article("iPhone", "www.exampleAndroid.com"));
-        dataBase.addNewArticle(new Article("Android", "www.exampleAndroid.com"));
-
-        List<Article> articleList = dataBase.getArticlesList();
-        adapter.clear();
-        adapter.addAll(articleList);
-        adapter.notifyDataSetChanged();
     }
 }

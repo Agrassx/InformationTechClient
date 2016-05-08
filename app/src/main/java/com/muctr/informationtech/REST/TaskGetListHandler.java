@@ -1,4 +1,6 @@
-package com.muctr.informationtech;
+package com.muctr.informationtech.REST;
+
+import com.muctr.informationtech.AppLogics.Article;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.muctr.informationtech"
-        buildConfigField 'String', 'ServerAddress', '"http://192.168.0.107:9000/api/v1/"'
+        buildConfigField 'String', 'ServerAddress', '"http://192.168.1.2:9000/api/v1/"'
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
